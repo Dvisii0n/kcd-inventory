@@ -25,4 +25,19 @@ async function createItem(req, res) {
 	}
 }
 
-export default { getInventory, createItem };
+async function updateItem(req, res) {
+	try {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			res.send(errors.array());
+			return;
+		}
+		const itemDataWithId = matchedData(req);
+		await queries.updateItem(itemDataWithId);
+		res.redirect("/");
+	} catch (error) {
+		throw error;
+	}
+}
+
+export default { getInventory, createItem, updateItem };
