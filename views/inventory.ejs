@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title><% title %></title>
+</head>
+
+<body>
+	<h1>Inventory</h1>
+	<button>Add item</button>
+	<button>Update item</button>
+	<button>Remove item</button>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Quantity</th>
+			<th>Power</th>
+			<th>Quality</th>
+			<th>Weight</th>
+			<th>Value</th>
+			<th>Category</th>
+		</tr>
+		<% items.forEach(item => {
+                %> <%- include('itemRow', {item: item}) %> <%
+            }) %>
+	</table>
+</body>
+
+</html>
