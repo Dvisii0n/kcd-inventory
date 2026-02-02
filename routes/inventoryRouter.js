@@ -12,9 +12,15 @@ inventoryRouter.post(
 );
 
 inventoryRouter.put(
-	"/update/:id",
+	"/update/:itemId",
 	itemValidator.validateUpdateItem,
 	invController.updateItem,
+);
+
+inventoryRouter.delete(
+	"/delete/:itemId",
+	itemValidator.validateDeleteItem,
+	invController.deleteItem,
 );
 
 export default inventoryRouter;
