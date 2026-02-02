@@ -11,6 +11,10 @@ const isAplhaError = "should only contain letters";
 const isFloatError = "should be a decimal number and no less than 0";
 
 const itemValidationRules = {
+	itemId: param("itemId")
+		.exists()
+		.isInt({ min: 1 })
+		.withMessage("Nice try idiot"),
 	name: body("name")
 		.isAlpha("en-US", { ignore: " " })
 		.withMessage(`Name ${isAplhaError}`)
@@ -58,8 +62,9 @@ const validateCreateItem = [
 	itemValidationRules.value,
 	itemValidationRules.categoryId,
 ];
+
 const validateUpdateItem = [
-	param("id").exists().isInt({ min: 1 }).withMessage("Nice try idiot"),
+	itemValidationRules.itemId,
 	itemValidationRules.name.optional(),
 	itemValidationRules.quantity.optional(),
 	itemValidationRules.power.optional(),
@@ -69,4 +74,6 @@ const validateUpdateItem = [
 	itemValidationRules.categoryId.optional(),
 ];
 
-export default { validateCreateItem, validateUpdateItem };
+const validateDeleteItem = itemValidationRules.itemId;
+
+export default { validateCreateItem, validateUpdateItem, validateDeleteItem };
