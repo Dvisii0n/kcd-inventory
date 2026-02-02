@@ -1,10 +1,9 @@
-import queries from "../db/queries.js";
+import queries from "../db/itemQueries.js";
 import { matchedData, validationResult } from "express-validator";
 
 async function getInventory(req, res) {
 	try {
 		const items = await queries.getItems();
-		console.log(items);
 		res.render("inventory", { title: "Inventory", items: items });
 	} catch (error) {
 		throw error;
@@ -32,12 +31,29 @@ async function updateItem(req, res) {
 			res.send(errors.array());
 			return;
 		}
-		const itemDataWithId = matchedData(req);
-		await queries.updateItem(itemDataWithId);
+		const itemData = matchedData(req);
+		const { itemId } = itemData;
+		delete itemData.itemId;
+		await queries.updateItem(itemId, itemData);
 		res.redirect("/");
 	} catch (error) {
 		throw error;
 	}
 }
 
-export default { getInventory, createItem, updateItem };
+async function deleteItem(req, res) {
+	try {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			res.send(errors.array());
+			return;
+		}
+		const { itemId } = matchedData(req);
+		await queries.deleteItem(itemId);
+		res.redirect("/");
+	} catch (error) {
+		throw error;
+	}
+}
+
+export default { getInventory, createItem, updateItem, deleteItem };
