@@ -5,6 +5,13 @@ import itemValidator from "../validators/itemValidator.js";
 const inventoryRouter = new Router();
 
 inventoryRouter.get("/", invController.getInventory);
+
+inventoryRouter.get(
+	"/:categoryName",
+	itemValidator.validateCategoryName,
+	invController.getCategoryItems,
+);
+
 inventoryRouter.post(
 	"/create",
 	itemValidator.validateCreateItem,
