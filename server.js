@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 
 import indexRouter from "./routes/indexRouter.js";
 import inventoryRouter from "./routes/inventoryRouter.js";
+import categoriesRouter from "./routes/categoriesRouter.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,6 +21,7 @@ app.set("view engine", "ejs");
 
 app.use("/", indexRouter);
 app.use("/inventory", inventoryRouter);
+app.use("/categories", categoriesRouter);
 
 app.use((req, res) => {
 	res.status(404).send("404 not found");
