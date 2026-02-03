@@ -2,7 +2,20 @@ import pool from "./pool.js";
 
 async function getItems() {
 	const { rows } = await pool.query(
-		"SELECT items.name, quantity, power, quality, weight, value, categories.name AS category FROM items JOIN categories ON items.category_id = categories.id",
+		"SELECT items.id, items.name, quantity, power, quality, weight, value, categories.name AS category FROM items JOIN categories ON items.category_id = categories.id",
+	);
+	return rows;
+}
+
+async function getCategoryItems(categoryName) {
+	const { rows } = await pool.query(
+		`
+         SELECT item.id, items.name, quantity, power, quality, weight, value, categories.name AS category
+		 FROM items 
+         JOIN categories ON items.category_id = categories.id 
+         WHERE categories.name = $1
+		`,
+		[categoryName],
 	);
 	return rows;
 }
@@ -36,4 +49,10 @@ async function deleteItem(itemId) {
 	await pool.query("DELETE FROM items WHERE id = $1", [itemId]);
 }
 
-export default { getItems, createItem, updateItem, deleteItem };
+export default {
+	getItems,
+	createItem,
+	updateItem,
+	deleteItem,
+	getCategoryItems,
+};
