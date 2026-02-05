@@ -51,15 +51,6 @@ const itemValidationRules = {
 		.withMessage("CategoryId should be an integer")
 		.isInt({ min: 1 })
 		.withMessage(`CategoryId should be higher than 0`),
-
-	categoryName: param("categoryName")
-		.trim()
-		.isAlpha()
-		.withMessage(`categoryName ${isAplhaError}`)
-		.isLength({ min: 3, max: 25 })
-		.withMessage(
-			"categoryName length should be at least 3 characters and no more than 25 characters",
-		),
 };
 
 const validateCreateItem = [
@@ -85,11 +76,8 @@ const validateUpdateItem = [
 
 const validateDeleteItem = itemValidationRules.itemId;
 
-const validateCategoryName = itemValidationRules.categoryName;
-
 export default {
 	validateCreateItem,
 	validateUpdateItem,
 	validateDeleteItem,
-	validateCategoryName,
 };
