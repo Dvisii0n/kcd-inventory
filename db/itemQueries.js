@@ -7,19 +7,6 @@ async function getItems() {
 	return rows;
 }
 
-async function getCategoryItems(categoryName) {
-	const { rows } = await pool.query(
-		`
-         SELECT item.id, items.name, quantity, power, quality, weight, value, categories.name AS category
-		 FROM items 
-         JOIN categories ON items.category_id = categories.id 
-         WHERE categories.name = $1
-		`,
-		[categoryName],
-	);
-	return rows;
-}
-
 async function createItem(itemData) {
 	const { name, quantity, power, quality, weight, value, category_id } =
 		itemData;
@@ -54,5 +41,4 @@ export default {
 	createItem,
 	updateItem,
 	deleteItem,
-	getCategoryItems,
 };
