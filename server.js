@@ -21,7 +21,6 @@ app.set("view engine", "ejs");
 
 app.use("/", indexRouter);
 app.use("/inventory", inventoryRouter);
-app.use("/categories", categoriesRouter);
 
 app.use((req, res) => {
 	res.status(404).send("404 not found");
