@@ -1,7 +1,7 @@
-<tr data_id=<%= item.id %>>
+<tr data_id=<%= item.id %> class='itemRow'>
 	<% for (let key of Object.keys(item)) {
     if (key === 'id') continue %>
-	<td><%= item[key]  %></td><%
+	<td class="tableCell"><%= item[key]  %></td><%
    } %>
 
 </tr>

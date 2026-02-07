@@ -4,29 +4,38 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/styles.css">
 	<title><% title %></title>
 </head>
 
 <body>
-	<h1>Inventory</h1>
-	<button>Add item</button>
-	<button>Update item</button>
-	<button>Remove item</button>
-	<button onclick="window.location.href='/inventory/categories'">All Categories</button>
-	<table>
-		<tr>
-			<th>Name</th>
-			<th>Quantity</th>
-			<th>Power</th>
-			<th>Quality</th>
-			<th>Weight</th>
-			<th>Value</th>
-			<th>Category</th>
-		</tr>
-		<% items.forEach(item => {
+	<header class="inventoryButtons">
+		<button>ADD</button>
+		<button>UPDATE</button>
+		<button>REMOVE</button>
+		<button onclick="window.location.href='/inventory/categories'">CATEGORIES</button>
+
+	</header>
+	<div class="border">
+		<div class="inventoryWrapper">
+			<table class="inventoryTable">
+				<tbody>
+					<tr class="tableHeadings">
+						<th><img class="headingIcon" src="/images/name.png" alt="name"></th>
+						<th>#</th>
+						<th><img class="headingIcon" src="/images/power.png" alt="power"></th>
+						<th><img class="headingIcon" src="/images/heart.png" alt="condition"></th>
+						<th><img class="headingIcon" src="/images/weight.png" alt="weight"></th>
+						<th><img class="headingIcon" src="/images/groschen.png" alt="value"></th>
+						<th>Category</th>
+					</tr>
+					<% items.forEach(item => {
                 %> <%- include('itemRow', {item: item}) %> <%
             }) %>
-	</table>
+				</tbody>
+		</div>
+	</div>
+
 </body>
 
 </html>
