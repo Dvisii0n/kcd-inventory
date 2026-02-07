@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer:ital@0;1&display=swap");
+:root {
+	--inv-border: rgba(128, 128, 128, 0.39);
+	--row-color: #eee5cb;
+	--default-font: "IM Fell Great Primer", serif;
+}
+
+body {
+	margin: 0;
+	font-size: 20px;
+	font-family: var(--default-font);
+}
+
+.border {
+	padding: 20px;
+	background-color: #5a3c1d;
+	background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+}
+
+.inventoryButtons {
+	display: flex;
+	background-color: black;
+	padding: 5px 0px;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+}
+
+.inventoryButtons > button {
+	background-color: black;
+	color: rgb(235, 228, 190);
+	border: none;
+	font-family: var(--default-font);
+	font-size: 24px;
+	cursor: pointer;
+}
+
+.inventoryWrapper {
+	background-color: var(--row-color);
+	height: 100vh;
+}
+
+.inventoryTable {
+	table-layout: fixed;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.tableHeadings {
+	background-color: #3e476d;
+	color: #f0e097;
+	height: 25px;
+	border-bottom: 3px solid black;
+}
+
+.headingIcon {
+	margin-top: 5px;
+	width: 25px;
+	height: 25px;
+}
+
+.itemRow {
+	background-color: #eee5cb;
+}
+
+.tableCell {
+	padding: 5px;
+	text-align: center;
+	border-bottom: 1px solid var(--inv-border);
+	border-left: 1px solid var(--inv-border);
+}
+/* item name field */
+.itemRow :nth-child(1) {
+	text-align: left;
+	border-left: none;
+}
