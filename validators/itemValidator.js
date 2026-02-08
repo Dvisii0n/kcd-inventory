@@ -76,8 +76,11 @@ const validateUpdateItem = [
 
 const validateDeleteItem = itemValidationRules.itemId;
 
+const validateItemId = itemValidationRules.itemId;
+
 export default {
 	validateCreateItem,
 	validateUpdateItem,
 	validateDeleteItem,
+	validateItemId,
 };
