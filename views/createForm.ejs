@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/styles.css">
+	<title>Create Item</title>
+</head>
+
+<body>
+	<div class="formBg">
+
+		<form class="customForm" action="/inventory/create" method="POST">
+			<legend>Create Item</legend>
+			<label for="name">Name</label>
+			<input type="text" name="name" placeholder="Longsword" required />
+			<label for="quantity">Quantity</label>
+			<input type="number" name="quantity" min='1' placeholder="1" required />
+			<label for="power">Power</label>
+			<input type="number" name="power" min="0" placeholder='0' required />
+			<label for="quality">Quality</label>
+			<input type="number" name="quality" min='0' placeholder='100' required />
+			<label for="weight">Weight</label>
+			<input type="number" name="weight" min="0" step="0.1" placeholder="0.0" required />
+			<label for="value">Value</label>
+			<input type="number" name="value" min="0" step="0.1" placeholder='0.0' required />
+			<label for="category_id">Category</label>
+			<select name="category_id">
+				<% categories.forEach(category => { %>
+				<option value=<%= category.id %>><%= category.name %></option>
+				<%}) %>
+			</select>
+			<button type="submit">Add</button>
+			<button type="button" onclick="window.location.href='/inventory'">Cancel</button>
+		</form>
+		<% if (errors) {%>
+		<%- include('partials/errors', {errors: errors}) %>
+		<%} %>
+
+	</div>
+</body>
+
+</html>

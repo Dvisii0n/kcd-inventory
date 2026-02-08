@@ -1,7 +1,26 @@
-<tr data_id=<%= item.id %> class='itemRow'>
-	<% for (let key of Object.keys(item)) {
-    if (key === 'id') continue %>
-	<td class="tableCell"><%= item[key]  %></td><%
-   } %>
+<tr data_id="<%= item.id %>" class="itemRow">
+	<% for (let key of Object.keys(item)) { %>
+	<% switch (key) {
+            case 'id':
+                continue;
+                break;
+            case 'name': %>
+	<td class="tableCell">
+		<div class="cellContainer">
+			<p><%= item[key] %></p>
+			<div class="rowIconContainer">
 
+				<img onclick="window.location.href='/inventory/forms/update/' + '<%= item.id %>'" class="editIcon" src="/images/quill.png" alt="edit" loading="lazy">
+				<img data_id="<%= item.id %>" class="deleteIcon" src="/images/delete.png" alt="edit" loading="lazy" onclick="deleteItem('<%= item.id %>', '<%= item[key]%>')">
+
+			</div>
+		</div>
+	</td>
+	<% break;
+            
+            default: %>
+	<td class="tableCell"><%= item[key] %></td>
+	<% break;
+        } %>
+	<% } %>
 </tr>

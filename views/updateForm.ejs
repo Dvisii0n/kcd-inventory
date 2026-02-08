@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/styles.css">
+	<title>Update Item</title>
+</head>
+
+<body>
+	<div class="formBg update">
+
+		<form class="customForm" action=/inventory/update/<%= item.id %> method="POST">
+			<legend>Update Item</legend>
+			<label for="name">Name</label>
+			<input type="text" name="name" placeholder="Longsword" value='<%= item.name %>' required />
+			<label for="quantity">Quantity</label>
+			<input type="number" name="quantity" min='1' placeholder="1" value=<%= item.quantity %> required />
+			<label for="power">Power</label>
+			<input type="number" name="power" min="0" placeholder='0' value=<%= item.power %> required />
+			<label for="quality">Quality</label>
+			<input type="number" name="quality" min='0' placeholder='100' value=<%= item.quality %> required />
+			<label for="weight">Weight</label>
+			<input type="number" name="weight" min="0" step="0.1" placeholder="0.0" value=<%= item.weight %> required />
+			<label for="value">Value</label>
+			<input type="number" name="value" min="0" step="0.1" placeholder='0.0' value=<%= item.value %> required />
+			<label for="category_id">Category</label>
+			<select name="category_id">
+				<% categories.forEach(category => { %>
+				<% if (currentCategoryId === category.id) { %>
+				<option value=<%= category.id %> selected><%= category.name %></option>
+				<%} else {%>
+				<option value=<%= category.id %>><%= category.name %></option>
+				<%}}) %>
+			</select>
+			<button type="submit">Update</button>
+			<button type="button" onclick="window.location.href='/inventory'">Cancel</button>
+		</form>
+		<% if (errors) {%>
+		<%- include('partials/errors', {errors: errors}) %>
+		<%} %>
+
+
+	</div>
+</body>
+
+</html>
