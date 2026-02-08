@@ -13,6 +13,38 @@ body {
 	background-color: black;
 }
 
+.indexBody {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-image: url(/images/indexbg.jpg);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 75vh;
+	gap: 12px;
+}
+
+.indexButton {
+	padding: 8px;
+	max-width: 200px;
+	font-family: var(--default-font);
+	font-size: 18px;
+	background-color: #363d5e;
+	border-color: var(--row-color);
+	color: var(--row-color);
+	cursor: pointer;
+}
+
+.indexButton:hover {
+	background-color: #6570ac;
+}
+
+.logo {
+	max-width: 25vw;
+}
+
 p {
 	padding: 0;
 	margin: 0;
@@ -26,7 +58,7 @@ p {
 	align-items: center;
 	background-image: url(/images/background.jpg);
 	background-position: center;
-	background-size: fill;
+	background-size: cover;
 	background-repeat: no-repeat;
 	gap: 20px;
 }
@@ -115,7 +147,8 @@ input {
 	background-blend-mode: color-burn;
 }
 
-.inventoryButtons {
+.inventoryButtons,
+.categoryButtons {
 	display: flex;
 	background-color: black;
 	padding: 5px 0px;
@@ -124,7 +157,8 @@ input {
 	gap: 12px;
 }
 
-.inventoryButtons > button {
+.inventoryButtons > button,
+.categoryButtons > button {
 	background-color: black;
 	color: rgba(235, 228, 190, 0.493);
 	border: none;
@@ -133,15 +167,56 @@ input {
 	cursor: pointer;
 }
 
-.inventoryButtons > button:hover {
+.inventoryButtons > button:hover,
+.categoryButtons > button:hover {
 	color: rgb(235, 228, 190);
 }
 
-.inventoryWrapper {
+.inventoryWrapper,
+.categoriesWrapper {
 	background-color: var(--row-color);
 	background-image: url(/images/textured-paper.png);
 	height: 100vh;
 	box-shadow: inset 0px 1px 24px -5px rgba(0, 0, 0, 1);
+}
+
+.categoriesWrapper {
+	padding: 15px;
+}
+
+.categoryContainer {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+	gap: 15px;
+}
+
+.categoryTile {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid;
+	height: 100px;
+	background-image: url("/images/categories/wood-tile.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+.categoryTileContainer {
+	transition: transform 200ms ease-out;
+	cursor: pointer;
+}
+
+.categoryTileContainer:hover {
+	transform: translateY(-5px);
+}
+
+.categoryName {
+	text-align: center;
+}
+
+.categoryIcon {
+	height: 50%;
+	color: var(--row-color);
 }
 
 .inventoryTable {
