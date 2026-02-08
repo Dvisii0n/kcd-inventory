@@ -1,8 +1,8 @@
-# Placeholder
+# KCD Inventory App
 
-Simple CRUD app made to learn more about the MVC controller pattern and to practice server-side validation. 
+Simple CRUD app made to learn more about the MVC pattern and to practice server-side validation. 
 
-[Live Demo]()
+[Live Demo](https://kcd-inventory.onrender.com)
 
 ![inventory](./screenshots/inventory.png)
 
