@@ -2,7 +2,11 @@ import { Router } from "express";
 import invController from "../controllers/inventoryController.js";
 import itemValidator from "../validators/itemValidator.js";
 import categoriesRouter from "./categoriesRouter.js";
-import { validationErrorHandler } from "../validators/validationUtils.js";
+import {
+	createFormValidationHandler,
+	updateFormValidationHandler,
+	validationErrorHandler,
+} from "../validators/validationUtils.js";
 
 const inventoryRouter = new Router();
 
@@ -10,17 +14,24 @@ inventoryRouter.use("/categories", categoriesRouter);
 
 inventoryRouter.get("/", invController.getInventory);
 
+inventoryRouter.get(
+	"/forms/update/:itemId",
+	itemValidator.validateItemId,
+	invController.getUpdateForm,
+);
+
+inventoryRouter.get("/forms/create", invController.getCreateForm);
 inventoryRouter.post(
 	"/create",
 	itemValidator.validateCreateItem,
-	validationErrorHandler,
+	createFormValidationHandler,
 	invController.createItem,
 );
 
-inventoryRouter.put(
+inventoryRouter.post(
 	"/update/:itemId",
 	itemValidator.validateUpdateItem,
-	validationErrorHandler,
+	updateFormValidationHandler,
 	invController.updateItem,
 );
 
