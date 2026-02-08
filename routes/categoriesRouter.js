@@ -21,7 +21,7 @@ categoriesRouter.post(
 	catController.createCategory,
 );
 
-categoriesRouter.put(
+categoriesRouter.post(
 	"/update/:categoryId",
 	catValidator.validateCategoryUpdate,
 	validationErrorHandler,
