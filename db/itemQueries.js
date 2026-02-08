@@ -16,6 +16,13 @@ async function createItem(itemData) {
 	);
 }
 
+async function getItem(itemId) {
+	const { rows } = await pool.query("SELECT * FROM items WHERE id = $1", [
+		itemId,
+	]);
+	return rows;
+}
+
 async function updateItem(itemId, itemData) {
 	const keys = Object.keys(itemData);
 	const itemDataValues = Object.values(itemData);
@@ -41,4 +48,5 @@ export default {
 	createItem,
 	updateItem,
 	deleteItem,
+	getItem,
 };
