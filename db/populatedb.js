@@ -1,6 +1,13 @@
 import { Client } from "pg";
 
 const SQL = `
+
+CREATE TABLE categories (
+    id integer NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    name character varying(25),
+    imageurl text
+);
+
 CREATE TABLE items (
     id integer NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name character varying(255) NOT NULL,
@@ -9,14 +16,8 @@ CREATE TABLE items (
     quality integer DEFAULT 100 NOT NULL,
     weight numeric(10,1) DEFAULT 0.0 NOT NULL,
     value numeric(10,1) DEFAULT 0.0 NOT NULL,
-    category_id integer NOT NULL FOREIGN KEY REFERENCES categories(id)
+    category_id integer NOT NULL REFERENCES categories(id)
 ); 
-
-CREATE TABLE categories (
-    id integer NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    name character varying(25),
-    imageurl text
-);
 
 INSERT INTO categories (name, imageurl) VALUES
   ('Armour', '/images/categories/armour.png'),
