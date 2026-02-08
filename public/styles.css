@@ -1,20 +1,118 @@
 @import url("https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer:ital@0;1&display=swap");
 :root {
-	--inv-border: rgba(128, 128, 128, 0.39);
-	--row-color: #eee5cb;
+	--inv-border: rgba(145, 145, 145, 0.233);
+	--row-color: #edd37d;
 	--default-font: "IM Fell Great Primer", serif;
+	--kcd-blue: #3e476d;
 }
 
 body {
 	margin: 0;
 	font-size: 20px;
 	font-family: var(--default-font);
+	background-color: black;
+}
+
+p {
+	padding: 0;
+	margin: 0;
+}
+
+.formBg {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	background-image: url(/images/background.jpg);
+	background-position: center;
+	background-size: fill;
+	background-repeat: no-repeat;
+	gap: 20px;
+}
+
+.formBg.update {
+	background-image: url(/images/background2.jpg);
+}
+
+.cellContainer {
+	display: flex;
+	justify-content: space-between;
+}
+
+.rowIconContainer {
+	display: flex;
+	justify-self: end;
+	gap: 8px;
+}
+
+.editIcon,
+.deleteIcon {
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+}
+
+.errorPartial {
+	color: rgb(255, 0, 0);
+	background-color: rgba(0, 0, 0, 0.466);
+	list-style-type: upper-roman;
+	border-radius: 12px;
+}
+
+.errorMsg {
+	padding: 5px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--kcd-blue);
+	color: var(--row-color);
+	font-size: 18px;
+	width: 250px;
+	gap: 5px;
+	padding: 15px;
+	border-style: solid;
+	border-image-source: url(/images/border.png);
+	border-image-slice: 20 fill;
+	border-image-outset: 80px 70px 125px 55px;
+}
+
+form > button,
+form > select {
+	background-color: #363d5e;
+	font-family: var(--default-font);
+	font-size: 18px;
+	color: var(--row-color);
+	border: 1px solid var(--row-color);
+	cursor: pointer;
+}
+
+form > button:hover {
+	background-color: var(--row-color);
+	color: black;
+}
+
+legend {
+	font-size: 22px;
+	text-align: center;
+}
+
+input {
+	border: 1px solid var(--row-color);
+	color: var(--row-color);
+	font-family: var(--default-font);
+	font-size: 16px;
+	background-color: #363d5e;
+	height: 20px;
 }
 
 .border {
 	padding: 20px;
-	background-color: #5a3c1d;
+	background-color: #473019ee;
 	background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+	background-blend-mode: color-burn;
 }
 
 .inventoryButtons {
@@ -41,7 +139,9 @@ body {
 
 .inventoryWrapper {
 	background-color: var(--row-color);
+	background-image: url(http://www.transparenttextures.com/patterns/textured-paper.png);
 	height: 100vh;
+	box-shadow: inset 0px 1px 24px -5px rgba(0, 0, 0, 1);
 }
 
 .inventoryTable {
@@ -52,7 +152,7 @@ body {
 }
 
 .tableHeadings {
-	background-color: #3e476d;
+	background-color: var(--kcd-blue);
 	color: #f0e097;
 	height: 25px;
 	border-bottom: 3px solid black;
