@@ -111,7 +111,7 @@ input {
 .border {
 	padding: 20px;
 	background-color: #473019ee;
-	background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+	background-image: url(/images/wood-pattern.png);
 	background-blend-mode: color-burn;
 }
 
@@ -139,7 +139,7 @@ input {
 
 .inventoryWrapper {
 	background-color: var(--row-color);
-	background-image: url(http://www.transparenttextures.com/patterns/textured-paper.png);
+	background-image: url(/images/textured-paper.png);
 	height: 100vh;
 	box-shadow: inset 0px 1px 24px -5px rgba(0, 0, 0, 1);
 }
