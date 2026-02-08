@@ -4,17 +4,30 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/styles.css">
 	<title><%= title %></title>
 </head>
 
 <body>
-	<h1>Categories</h1>
-	<div class="categoryContainer">
-		<% categories.forEach(category => {
+	<header class="categoryButtons">
+		<button onclick="window.location.href='/'">HOME</button>
+		<button onclick="window.location.href='/inventory'">INVENTORY</button>
+	</header>
+	<div class="border">
+		<div class="categoriesWrapper">
+
+			<h1>Categories</h1>
+			<div class="categoryContainer">
+				<% categories.forEach(category => {
         %>
-		    <%- include("categoryTile", {category: category}) %>
-		<% }) %>
+				<%- include("categoryTile", {category: category}) %>
+				<% }) %>
+			</div>
+
+		</div>
+
 	</div>
+
 
 </body>
 

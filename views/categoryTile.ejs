@@ -1,4 +1,17 @@
-<div>
-	<img src="" alt="icon here" />
-	<p><%= category.name %></p>
+<div
+	class="categoryTileContainer"
+	onclick="
+		window.location.href =
+			'/inventory/categories/items/' + '<%= category.name %>'
+	"
+>
+	<div class="categoryTile">
+		<img
+			class="categoryIcon"
+			src="<%= category.imageurl %>"
+			alt="<%= category.name %>"
+		/>
+	</div>
+
+	<p class="categoryName"><%= category.name %></p>
 </div>
